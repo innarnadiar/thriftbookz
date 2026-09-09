@@ -1,56 +1,48 @@
-# Python CRUD Application for [Business Domain]
+# Python CRUD Application for Secondhand Bookshop (Thrift)
 
-A comprehensive Python application for managing [Data Entity] data with Create, Read, Update, and Delete (CRUD) operations.
+ThriftBookz - a Python application for managing physical secondhand book stock with Create, Read, Update, Delete, and Search operations.
 
 ## Business Understanding
 
-This project caters to the [Industry/Business Domain] industry, specifically addressing the need to manage [Data Entity] data efficiently. [Data Entity] plays a crucial role in [Explain the importance of data entity in business processes].
+Independent secondhand (preloved/thrift) book sellers usually sell on multiple social media such as Instagram or even through Whatsapp groups all at the same time. Their current system actually works well. They post a photo of the book on Instagram, using hashtags like #stillavailable to mark books status, and put comment "booked" if someone buys the book. Most of the time, buyers must confirm by DM first ("is this still available?") before paying. Sotrefront side of the business is fine.
+
+The problem is everything a storefront cannot see. 1) Sellers don't know their real profit. the cost of each secondhand book might differ, with variation of margin. Sellers know their sales, but not their profit exactly. 2) A feed cannot answer big-picture questions like "how many books are available now?" "how much money stuck in books that never sell?" 3) Some books never enter the system at all, such as cost of damaged books, cash sales offline book fairs, they're not gonna show on Instagram feeds. 4) Risk of getting banned, because the main records belong to the platform, not the seller. If the Instagram account gets banned or hacked, the whole catalog and sales history gone.
 
 **Benefits:**
 
-* Improved data accuracy and consistency
-* Streamlined data management processes
-* Enhanced decision-making through readily available data
-* ... (List additional benefits relevant to the business)
+- Answer "is this book still available?" in seconds, for every copy of a title.
+- Know the real profit, because the buying cost of every book is recorded.
+- Damaged or lost books stay in the report as losses, so profit numbers stay honest.
+- See which category sells fastest, to decide what to buy next.
+- Records stay with the seller, not with a social media platform.
 
 **Target Users:**
 
-This application is designed for [Target Users] (e.g., sales representatives, inventory managers, customer support agents) within the organization to facilitate their [Tasks/Activities] related to [Data Entity].
+Rising secondhand book sellers ( > 100 books), who buy in bulk or update collection regularly and have too many books to remember.
 
 ## Features
-
-* **Create:**
-    * Add new [Data Entity] entries with essential details like [List relevant fields].
-    * Implement validation rules to ensure data integrity (if applicable, e.g., unique identifiers, data type checks).
-* **Read:**
-    * Search and retrieve specific [Data Entity] records by applying filters based on [Searchable fields].
-    * Display comprehensive information for each [Data Entity] in a user-friendly format.
-    * Integrate pagination and sorting capabilities for large datasets (if applicable).
-* **Update:**
-    * Modify existing [Data Entity] data to reflect changes in [Attributes/Properties].
-    * Provide clear confirmation or error messages based on update success or failure.
-* **Delete:**
-    * Allow for the removal of unwanted [Data Entity] records with appropriate authorization checks (if applicable).
-    * Implement soft delete functionality to prevent permanent data loss (optional, depending on business needs).
-    * Consider offering data archiving capabilities (optional).
-* **Security:**
-    * Implement user authentication and authorization mechanisms (if sensitive data is involved) to control access to different CRUD operations.
-    * ... (Specify additional security features as needed)
-* **Reporting:**
-    * Generate reports or summaries based on [Data Entity] data to support [Business Functions] (optional).
-    * Export data in various formats (e.g., CSV, Excel) for further analysis (optional).
+    1. Tambah buku masuk      (Create)
+    2. Lihat stok & laporan   (Read + Report)
+    3. Cari / cek stok        (Search)
+    4. Ubah data buku         (Update)
+    5. Hapus data salah input (Delete)
+    0. Keluar
+* **Create:** record a book entering the warehouse: title, author, category, condition, buying price, selling price.
+* **Read:** see all stock and the money report.
+* **Search:** answer a buyer's DM ("is Animal Farm still available?"). It shows every copy with its status, price, and condition.
+* **Update:** mark a booking, a sale, a discount, or a damaged book.
+* **Delete:** remove a duplicate or mistyped row, with typed-ID confirmation.
 
 ## Installation
 
 1. **Prerequisites:**
-    * Python version (specify the required version)
-    * Additional dependencies (list any required packages)
+    * Python version 3.6 or newer
+    * No extra packages needed
 
 2. **Installation:**
     ```bash
-    git clone https://github.com/<your-username>/<your-repo-name>.git
-    cd <your-repo-name>
-    pip install -r requirements.txt  # If using a requirements.txt file
+    git clone https://github.com/<your-username>/thriftbookz.git
+    cd thriftbookz
     ```
 
 3. **Database Setup (if applicable):**
@@ -64,17 +56,25 @@ This application is designed for [Target Users] (e.g., sales representatives, in
     ```
 
 2. **CRUD Operations:**
-    * **Create:** Add a new [Data Entity] record, for example, a new customer in a customer management system, providing details like name, contact information, and preferences.
-    * **Read:** Search and retrieve customer information by name, ID, or other relevant criteria.
-    * **Update:** Modify customer details, such as updating their address or contact details.
-    * **Delete:** Remove a customer record from the system (with appropriate authorization, if applicable).
+    * **Create:** record a book entering the warehouse — title, author, category, condition, buying price, selling price.
+   * **Read:** see all stock and the money report.
+   * **Search:** answer a buyer's DM ("is Animal Farm still available?") — shows every copy with its status, price, and condition.
+   * **Update:** mark a booking, a sale, a discount, or a damaged book.
+   * **Delete:** remove a duplicate or mistyped row, with typed-ID confirmation.
 
 ## Data Model
-This project utilizes a [Data Structure] (e.g., relational database, JSON documents) to represent [Data Entity] data. The following fields are typically stored:
-   * [Field 1]: (Data type) - Description of the field's purpose in the business context.
-   * [Field 2]: (Data type) - Description of the field's purpose in the business context.
-   * ... (List all relevant fields)
+Data is stored as a list of dictionaries in memory. one dictionary per physical book:
+id (str) — book ID, e.g. BK001.
+judul (str) — title.
+penulis (str) — author.
+kategori (str) — one code, format FORM-READER-SUBJECT. Form: F/N (Fiction/Nonfiction). Reader: ANK/RMJ/DWS/SUM (children 0–11 / teens 12–18 / adult / all ages). Subject: 14 codes for fiction genres and nonfiction fields, plus LAI (other) as a catch-all.
+kondisi (str) — IOBA/ABAA grade: F, VG, G, FR, P (ioba.org/conditions-definitions).
+beli (int) — buying cost in rupiah. Cannot be changed after entry.
+jual (int) — selling price in rupiah.
+status (str) — book lifecycle: tersedia, dibooking, terjual, susut.
+catatan (str) — free note; required defect note for grades G/FR/P.
+
 
 ## Contributing
-We welcome contributions to this project! Please feel free to open a pull request, sent to [your_email] or submit an issue if you encounter any problems or have suggestions for improvements.
+Contributions are welcome! Please open a pull request or submit an issue if you find problems or have ideas. You can also reach me at innarnadiar@gmail.com.
 
