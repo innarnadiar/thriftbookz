@@ -27,6 +27,7 @@ Secondhand book sellers or admins ( with > 100 books), who sells their books onl
     4. Ubah data buku         (Update)
     5. Hapus data salah input (Delete)
     0. Keluar
+
 * **Create:** record a book entering the warehouse: title, author, category, condition, buying price, selling price.
 * **Read:** see all stock and the money report.
 * **Search:** answer a buyer's DM ("is Animal Farm still available?"). It shows every copy with its status, price, and condition.
@@ -61,17 +62,20 @@ Secondhand book sellers or admins ( with > 100 books), who sells their books onl
 
 ## Data Model
 Data is stored as a list of dictionaries in memory. one dictionary per physical book:
-id (str) — book ID, e.g. BK001.
-title (str) — title.
-author (str) — author.
-category (str) — one code, format FORM-READER-SUBJECT. Form: F/N (Fiction/Nonfiction). Reader: ANK/RMJ/DWS/SUM (children 0–11 / teens 12–18 / adult / all ages). Subject: 14 codes for fiction genres and nonfiction fields, plus LAI (other) as a catch-all.
-condition (str) — IOBA/ABAA grade: F, VG, G, FR, P (ioba.org/conditions-definitions).
-paid (int) — buying cost in rupiah. Cannot be changed after entry.
-price (int) — selling price in rupiah.
-status (str) — book lifecycle: available, booked, sold, depreciated.
-date_in (date) — YYYY-MM-DD: date when the book in.
-date_out (date) — YYYY-MM-DD: date when the book sold.
-notes (str) — free note; required defect note for grades G/FR/P.
+- id (str) — book ID, e.g. BK001.
+- title (str) — title.
+- author (str) — author.
+- category (str) — one code, format FORM-AUDIENCE-TOPIC.
+-     Form: FIC/NON (Fiction/Nonfiction).
+-     Audience: ANK/RMJ/DWS/SUM (children 0–11 / teens 12–18 / adult / all ages).
+-     Topic: 14 codes for fiction genres and nonfiction fields, such as LIT Literature, HIST History, plus LAI (other) as a catch-all.
+- condition (str) — IOBA/ABAA grade: F, VG, G, FR, P (ioba.org/conditions-definitions).
+- paid (int) — buying cost in rupiah. Cannot be changed after entry.
+- price (int) — selling price in rupiah.
+- status (str) — book lifecycle: available, booked, sold, depreciated.
+- date_in (date) — YYYY-MM-DD: date when the book in.
+- date_out (date) — YYYY-MM-DD: date when the book sold.
+- notes (str) — free note; required defect note for grades G/FR/P.
 
 
 ## Contributing
