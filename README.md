@@ -1,20 +1,19 @@
-# Python CRUD Application for Secondhand Bookshop (Thrift)
+# THRIFTBOOKZ - CRUD Application for Secondhand Bookshop Stock Management
 
 ThriftBookz - a Python application for managing physical secondhand book stock with Create, Read, Update, Delete, and Search operations.
 
 ## Business Understanding
 
-Independent secondhand (preloved/thrift) book sellers usually sell on multiple social media such as Instagram or even through Whatsapp groups all at the same time. Their current system actually works well. They post a photo of the book on Instagram, using hashtags like #stillavailable to mark books status, and put comment "booked" if someone buys the book. Most of the time, buyers must confirm by DM first ("is this still available?") before paying. Sotrefront side of the business is fine.
+Digital Independent secondhand (preloved/thrift) book sellers usually sell on multiple social media such as Instagram, e-commerce or even through Whatsapp groups. Although require manual effort, their current system actually works well. They post a photo of the book on Instagram, using hashtags like #stillavailable to mark books status, and put comment "booked" if someone buys the book. Most of the time, buyers must confirm by DM first ("is this still available?") before paying. From customer pov, sotrefront side of the business is fine.
 
-The problem is everything a storefront cannot see. 1) Sellers don't know their real profit. the cost of each secondhand book might differ, with variation of margin. Sellers know their sales, but not their profit exactly. 2) A feed cannot answer big-picture questions like "how many books are available now?" "how much money stuck in books that never sell?" 3) Some books never enter the system at all, such as cost of damaged books, cash sales offline book fairs, they're not gonna show on Instagram feeds. 4) Risk of getting banned, because the main records belong to the platform, not the seller. If the Instagram account gets banned or hacked, the whole catalog and sales history gone.
+The problem is everything a storefront cannot see. 1) Sellers don't know their real profit. The cost of each secondhand book might differ, with variation of margin. Sellers know their sales, but not their profit exactly. 2) A feed cannot answer big-picture questions like "how many books are available now?" "How much money is stuck in books that never sell?" or conduct a fast search on a specific title. 3) Secondhand book depreciate, how they monitor things such as cost of depreciated books, they're not gonna show on Instagram feeds.
 
 **Benefits:**
 
 - Answer "is this book still available?" in seconds, for every copy of a title.
 - Know the real profit, because the buying cost of every book is recorded.
-- Damaged or lost books stay in the report as losses, so profit numbers stay honest.
+- Depreciated or lost books stay in the report as losses, so profit numbers stay honest.
 - See which category sells fastest, to decide what to buy next.
-- Records stay with the seller, not with a social media platform.
 
 **Target Users:**
 
