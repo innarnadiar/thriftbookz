@@ -18,7 +18,7 @@ The problem is everything a storefront cannot see. 1) Sellers don't know their r
 
 **Target Users:**
 
-Rising secondhand book sellers ( > 100 books), who buy in bulk or update collection regularly and have too many books to remember.
+Secondhand book sellers or admins ( with > 100 books), who sells their books online
 
 ## Features
     1. Tambah buku masuk      (Create)
@@ -45,14 +45,11 @@ Rising secondhand book sellers ( > 100 books), who buy in bulk or update collect
     cd thriftbookz
     ```
 
-3. **Database Setup (if applicable):**
-    Follow specific instructions for configuring your database connection, aligning with the business's chosen database management system.
-
 ## Usage
 
 1. **Run the application:**
     ```bash
-    python main.py
+    python thriftbookz_main.py
     ```
 
 2. **CRUD Operations:**
@@ -65,14 +62,16 @@ Rising secondhand book sellers ( > 100 books), who buy in bulk or update collect
 ## Data Model
 Data is stored as a list of dictionaries in memory. one dictionary per physical book:
 id (str) — book ID, e.g. BK001.
-judul (str) — title.
-penulis (str) — author.
-kategori (str) — one code, format FORM-READER-SUBJECT. Form: F/N (Fiction/Nonfiction). Reader: ANK/RMJ/DWS/SUM (children 0–11 / teens 12–18 / adult / all ages). Subject: 14 codes for fiction genres and nonfiction fields, plus LAI (other) as a catch-all.
-kondisi (str) — IOBA/ABAA grade: F, VG, G, FR, P (ioba.org/conditions-definitions).
-beli (int) — buying cost in rupiah. Cannot be changed after entry.
-jual (int) — selling price in rupiah.
-status (str) — book lifecycle: tersedia, dibooking, terjual, susut.
-catatan (str) — free note; required defect note for grades G/FR/P.
+title (str) — title.
+author (str) — author.
+category (str) — one code, format FORM-READER-SUBJECT. Form: F/N (Fiction/Nonfiction). Reader: ANK/RMJ/DWS/SUM (children 0–11 / teens 12–18 / adult / all ages). Subject: 14 codes for fiction genres and nonfiction fields, plus LAI (other) as a catch-all.
+condition (str) — IOBA/ABAA grade: F, VG, G, FR, P (ioba.org/conditions-definitions).
+paid (int) — buying cost in rupiah. Cannot be changed after entry.
+price (int) — selling price in rupiah.
+status (str) — book lifecycle: available, booked, sold, depreciated.
+date_in (date) — YYYY-MM-DD: date when the book in.
+date_out (date) — YYYY-MM-DD: date when the book sold.
+notes (str) — free note; required defect note for grades G/FR/P.
 
 
 ## Contributing
